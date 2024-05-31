@@ -7,6 +7,7 @@ static void write(int);
 
 #include <iostream>
 
+
 // main() shows the overview:
 // * read all chars and write them out
 // * process commands, if a '@' is read
@@ -27,6 +28,7 @@ int main() {
 	return EXIT_SUCCESS;
 }
 
+
 // Keep track of how many characters are written. This is used as the values of declared
 // variables.
 
@@ -39,22 +41,30 @@ static void write(char chr) {
 
 static inline void write(int ch) { write(static_cast<char>(ch)); }
 
+
 // Use std::stream definition of end of file.
 
 static bool is_eof(int ch) { return ch == decltype(std::cin)::traits_type::eof(); }
+
 
 // Read next character, if end of file is not reached
 
 static int next(int ch) { if (! is_eof(ch)) { ch = std::cin.get(); } return ch; }
 
+
+// The positions of a variable are stored in a map.
+
+#include <map>
+
+static std::map<std::string, size_t> vars;
+
+
 // Needed to compile do_command().
 
 void write_pos(size_t value);
 
-#include <map>
 #include <sstream>
 
-static std::map<std::string, size_t> vars;
 
 // Look at the next character after '@':
 // * '@': write a '@'
@@ -96,6 +106,7 @@ static inline int do_command() {
 	}
 	return ch;
 }
+
 
 // Recursive version to write out non-negative decimal.
 
