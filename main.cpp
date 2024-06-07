@@ -116,3 +116,4 @@ void write_pos(size_t value) {
 	write(static_cast<char>('0' + (value % 10)));
 }
 
+// remove warning
